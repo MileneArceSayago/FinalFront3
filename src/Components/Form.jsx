@@ -12,7 +12,7 @@ const Form = () => {
     const onChangeName = (e) => setName(e.target.value);
     const onChangeEmail = (e) => setEmail(e.target.value);
 
-
+    
 
     const validateName = (name) => {
         return (name.length) > 5
@@ -31,12 +31,15 @@ const Form = () => {
           setIsErrorUser(false)
           setIsValid(true)
           console.log("Paciente guardado")
+
       }else{
           setIsValid(false)
           setIsErrorUser(true)
           console.log("La info es incorrecta")
       }
   }
+
+
 
   return (
     <>

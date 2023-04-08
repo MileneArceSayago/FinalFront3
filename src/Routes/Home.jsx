@@ -11,22 +11,14 @@ const Home = () => {
 
   return (
     <>
-      <h1>Home</h1>
-      <div className='card-grid'>
-        {/* Aqui deberias renderizar las cards */
-                    <div>
-                    <h1>Dentists List</h1>
-                        {dentists.length
-                          ? dentists.map((dentist) => (
-                                <div key={dentist.id}>
-                                  <Card name={dentist.name} username={dentist.username} id={dentist.id} />
-                                </div>
-                            ))
-                          : null}
-                  </div>
-  }
-      </div>
-      </>
+    <h1>Home</h1>
+    <div className='card-grid'>
+      {/* Aqui deberias renderizar las cards */}
+      {dentists.length && dentists.map((dentist) => (
+          <Card key={dentist.id} name={dentist.name} username={dentist.username} id={dentist.id} />
+      ))}
+    </div>
+  </>
   )
 }
 

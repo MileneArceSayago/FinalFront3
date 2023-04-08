@@ -26,6 +26,7 @@ const Detail = () => {
 
 
 
+
   return (
     <>
       <h1>Detail Dentist: {dentist.name} </h1>
@@ -37,6 +38,7 @@ const Detail = () => {
         <p>Email: {dentist.email}</p>
         <p>Phone: {dentist.phone}</p>
         <p>Website: {dentist.website}</p>
+
 
       </div>
     

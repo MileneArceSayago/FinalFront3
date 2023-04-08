@@ -1,6 +1,5 @@
-import { createContext, useReducer, useState, useEffect } from "react";
-
-
+import { useState, useEffect, useReducer } from "react";
+import { createContext } from "react";
 
 export const initialState = { 
   theme: localStorage.getItem('tema'), 
@@ -12,12 +11,15 @@ export const ContextGlobal = createContext();
 export const ContextProvider = ({ children }) => {
 
   const getFavsFromStorage = () => {
-    const localData = localStorage.getItem("favs");
+    const localData = localStorage.getItem('favs');
+    console.log(localStorage.getItem('favs'))
+    console.log(localData)
     return localData ? JSON.parse(localData) : [];
   };
 
   const saveFavsFromStorage = (fav) => {
     localStorage.setItem("favs", JSON.stringify(fav));
+    console.log(fav)
   };
 
   const reducer = (state, action) => {
@@ -38,10 +40,6 @@ export const ContextProvider = ({ children }) => {
         const newFavsDentists = state.favsDentists.filter((dentist) => dentist.id !== action.dentist.id);
         saveFavsFromStorage(newFavsDentists);
         return { ...state, favsDentists: newFavsDentists };
-      }
-      case 'REMOVE_ALL_DENTIST': {
-        localStorage.removeItem("favs");
-        return { ...state, favsDentists: [] };
       }
       case 'CAMBIAR_TEMA': {
         localStorage.setItem('tema', action.theme);
