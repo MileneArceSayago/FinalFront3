@@ -25,11 +25,14 @@ button , .favButton {
   border-radius: 5px;
   cursor: pointer;
   width: 80px;
-  height: 35px;
+  height: 50px;
   font-weight: 500;
   margin: 10px;
 }
 
+.centerText{
+  text-align: center;
+}
 
 h1{
   text-align: center;
@@ -38,7 +41,7 @@ h1{
 nav{
   display: flex;
   width: 80vw;
-  justify-content: flex-start;
+  justify-content: space-evenly;
   padding: 1rem;
 }
 
@@ -76,10 +79,27 @@ footer > p{
 form{
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: center;
+  align-items: center;
   width: 300px;
-  height: 100px;
+  height: 200px;
   margin: 0 auto;
+  padding: 20px;
+  border-radius: 20px;
+  border: 3px solid #FF9124;
+}
+
+input{
+  padding: 5px;
+  margin: 10px;
+  border-radius: 5px;
+
+}
+
+.centerDiv{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .card{
@@ -89,11 +109,20 @@ form{
   align-items: center;
   width: 200px;
   padding: 0.5rem 0.5rem 0 0.5rem;
-  border: 0.5px solid rgb(136, 136, 136);
+  border: 3px solid #F0730C;
+  border-radius: 20px;
+  box-shadow:
+  inset 0 -3em 3em rgba(0,0,0,0.1),
+        0 0  0 2px rgb(255,255,255),
+        0.3em 0.3em 1em rgba(0,0,0,0.3);
+}
+
+.card img{
+  border-radius: 50px;
 }
 
 .card:hover{
-  border: 0.5px solid rgb(206, 217, 142);
+  border: 3px solid #F2C44D;
 }
 
 .card-grid{

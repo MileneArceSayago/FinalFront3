@@ -3,45 +3,41 @@ import { createContext } from "react";
 
 export const initialState = { 
   theme: localStorage.getItem('tema'), 
-  favsDentists: [] 
+  favorites: [] 
+  
 }
 
 export const ContextGlobal = createContext();
 
 export const ContextProvider = ({ children }) => {
 
-  const getFavsFromStorage = () => {
+  const getFavs = () => {
     const localData = localStorage.getItem('favs');
     console.log(localStorage.getItem('favs'))
     console.log(localData)
     return localData ? JSON.parse(localData) : [];
   };
 
-  const saveFavsFromStorage = (fav) => {
+  const saveFavs = (fav) => {
     localStorage.setItem("favs", JSON.stringify(fav));
     console.log(fav)
   };
 
   const reducer = (state, action) => {
     switch (action.type) {
-      case 'ADD_DENTIST_FAV': {
-        const existsDentist = state.favsDentists.find((dentist) => dentist.id === action.dentist.id);
+      case 'add_fav': {
+        const existsDentist = state.favorites.find((dentist) => dentist.id === action.dentist.id);
         if (existsDentist) {
           return state;
         }
-        const newFavsDentists = [...state.favsDentists, action.dentist];
-        saveFavsFromStorage(newFavsDentists)
+        const newFavsDentists = [...state.favorites, action.dentist];
+        saveFavs(newFavsDentists)
         return { ...state, favsDentists: newFavsDentists };
       }
-      case 'LOAD_DENTISTS_FAVS': {
-        return { ...state, favsDentists: getFavsFromStorage() };
+      case 'show_favs': {
+        return { ...state, favsDentists: getFavs() };
       }
-      case 'REMOVE_DENTIST': {
-        const newFavsDentists = state.favsDentists.filter((dentist) => dentist.id !== action.dentist.id);
-        saveFavsFromStorage(newFavsDentists);
-        return { ...state, favsDentists: newFavsDentists };
-      }
-      case 'CAMBIAR_TEMA': {
+      case 'change_theme': {
         localStorage.setItem('tema', action.theme);
         return { ...state, theme: action.theme };
       }
@@ -61,7 +57,7 @@ export const ContextProvider = ({ children }) => {
 
   useEffect(() => {
     getDentists();
-    dispatch({ type: "LOAD_DENTISTS_FAVS" });
+    dispatch({ type: "show_favs" });
   }, [])
 
 

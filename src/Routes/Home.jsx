@@ -6,9 +6,6 @@ import { ContextGlobal } from '../Components/utils/global.context';
 
 const Home = () => {
   const {dentists} = useContext(ContextGlobal);
-
-
-
   return (
     <>
     <h1>Home</h1>

@@ -9,24 +9,19 @@ const Navbar = () => {
   const {state, dispatch} = useContext(ContextGlobal)
 
   const cambiarTema = (theme) =>{
-    dispatch({type: 'CAMBIAR_TEMA', theme})
+    dispatch({type: 'change_theme', theme})
   };
 
   return (
     <nav>
-      <button>
-        <Link to="/home">Home</Link>
-      </button>
-      <button>
-        <Link to="/contact">Contacto</Link>
-      </button>
-      <button>
-        <Link to="/favs">Favs</Link>
-      </button>
+      
+      <Link to="/home"><button>Home🏠</button></Link>
+      <Link to="/contact"><button>Contact👤</button></Link>
+      <Link to="/favs"><button>Favs❤️</button></Link>
       {/* Aqui deberan agregar los liks correspondientes a las rutas definidas */}
       {/* Deberan implementar ademas la logica para cambiar de Theme con el button */}
 
-      <button onClick={() => cambiarTema(!state.theme)}>{state.theme ? '🌙':'☀'}</button>
+      <button onClick={() => cambiarTema(!state.theme)}>{state.theme ? 'Modo 🖥️: Noche':'Modo 🖥️: Dia'}</button>
     </nav>
   )
 }

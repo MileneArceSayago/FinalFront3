@@ -16,17 +16,16 @@ const Form = () => {
 
     const validateName = (name) => {
         return (name.length) > 5
-        }
+    }
 
 
     const validateEmail = (email) => {
         return email.includes("@") & email.includes(".")
-        }
+    }
+  
 
     function onSubmitForm(e){
       e.preventDefault();
-
-
       if(validateName(name) && validateEmail(email)){
           setIsErrorUser(false)
           setIsValid(true)
@@ -35,7 +34,7 @@ const Form = () => {
       }else{
           setIsValid(false)
           setIsErrorUser(true)
-          console.log("La info es incorrecta")
+          console.log("La info es incorrecta");
       }
   }
 
@@ -44,19 +43,21 @@ const Form = () => {
   return (
     <>
     <div>
-    <h1>Veterinaria DH</h1>
+    <h1>Contacto 🧑🏼‍🦰</h1>
     <h2>Ingresa los datos del paciente</h2>
     <form onSubmit={onSubmitForm}>
-      <div>
+        <div>
             <input
+                    id="inputName"
                     type="text"
                     placeholder="Ingrese su nombre"
                     value={name}
                     onChange={onChangeName}
                 />
-            </div>
-            <div>
+        </div>
+        <div>
                 <input
+                    id="inputEmail"
                     type="email"
                     placeholder="Ingrese su email"
                     value={email}
@@ -64,9 +65,11 @@ const Form = () => {
                 />
 
                 </div>
+                <div>
                 {isErrorUser && <p>Por favor verifique su información nuevamente</p>}
                 {isValid && <p>Gracias {name}, te contactaremos cuanto antes vía mail</p>}
                 <button type="submit">Añade al paciente</button>
+                </div>
         </form>
     </div>
     </>
